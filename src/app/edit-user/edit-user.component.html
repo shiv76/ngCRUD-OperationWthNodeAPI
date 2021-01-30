@@ -1,0 +1,61 @@
+<div class="card">
+    <div class="card-body">
+      <form [formGroup]="updateUserForm" novalidate>
+        <div class="form-group">
+          <label class="col-md-4">First Name</label>
+          <input type="text" class="form-control" 
+            formControlName="firstName" 
+            #firstName
+            [(ngModel)]="user.firstName" />
+        </div>
+        <div *ngIf="updateUserForm.controls['firstName'].invalid && (updateUserForm.controls['firstName'].dirty || updateUserForm.controls['firstName'].touched)" class="alert alert-danger">
+          <div *ngIf="updateUserForm.controls['firstName'].errors.required">
+            First Name is required.
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4">Last Name</label>
+            <input type="text" class="form-control" 
+              formControlName="lastName" 
+              #lastName 
+              [(ngModel)]="user.lastName"/>
+          </div>
+          <div *ngIf="updateUserForm.controls['lastName'].invalid && (updateUserForm.controls['lastName'].dirty || updateUserForm.controls['lastName'].touched)" class="alert alert-danger">
+            <div *ngIf="updateUserForm.controls['lastName'].errors.required">
+              Last Name is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">Email</label>
+            <input type="text" class="form-control" 
+              formControlName="email" 
+              #email 
+              [(ngModel)]="user.email"/>
+          </div>
+          <div *ngIf="updateUserForm.controls['email'].invalid && (updateUserForm.controls['email'].dirty || updateUserForm.controls['email'].touched)" class="alert alert-danger">
+            <div *ngIf="updateUserForm.controls['email'].errors.required">
+              Email is required.
+            </div>
+          </div>
+        <div class="form-group">
+          <label class="col-md-4">Job Title</label>
+          <input type="text" class="form-control" 
+            formControlName="jobTitle" 
+            #jobTitle
+            [(ngModel)]="user.jobTitle"
+          />
+        </div>
+        <div *ngIf="updateUserForm.controls['jobTitle'].invalid && (updateUserForm.controls['jobTitle'].dirty || updateUserForm.controls['jobTitle'].touched)" class="alert alert-danger">
+          <div *ngIf="updateUserForm.controls['jobTitle'].errors.required">
+            Job Title is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <button (click) = "updateUser(firstName.value, lastName.value, email.value,jobTitle.value)" type="submit" class="btn btn-primary btn-lg btn-block"
+          [disabled]="updateUserForm.pristine || updateUserForm.invalid" >
+           Update
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
